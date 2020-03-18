@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Set List</title>
+
+    <style type="text/css">
+        body {
+            background-color: antiquewhite;
+        };
+
+    </style>
+
+    <script language='javascript'>
+        
+    </script>
+
+</head>
+    <body>
+        <div class="info">Serialized:</div>
+        <div id='song0'></div>
+        <div id='song1'></div>
+        <div id='song2'></div>
+        <div id='song3'></div>
+        <div id='song4'></div>
+        <div id='song5'></div>
+        <div id='song6'></div>
+        <div id='song7'></div>
+        <div id='song8'></div>
+        <div id='song9'></div>
+        <br>
+
+        <div class="info">Formatted:</div>
+        <br>
+
+        
+        <div class = readable>
+            <div class="title" id = title0></div>
+            
+            <div class = "artist" id = artist10></div>
+            <div class = "artist" id = artist20></div>
+
+            <div class = "genre" id = genre10></div>
+            <div class = "year" id = year0></div>
+        </div>
+
+    <br>
+
+        <div class = readable>
+            <div class = title id = title1></div>
+            
+            <div class = artist id = artist11></div>
+            <div class = artist id = artist21></div>
+
+            <div class = genre id = genre11></div>
+            <div class = year id = year1></div>
+        </div>
+        <br>
+
+
+        <div class = readable>
+            <div class = title id = title2></div>
+            
+            <div class = artist id = artist12></div>
+            <div class = artist id = artist22></div>
+
+            <div class = genre id = genre12></div>
+            <div class = year id = year2></div>
+        </div>
+        <br>
+
+
+        <div class = readable>
+            <div class = title id = title2></div>
+            
+            <div class = artist id = artist12></div>
+            <div class = artist id = artist22></div>
+
+            <div class = genre id = genre12></div>
+            <div class = year id = year2></div>
+        </div>
+        <br>
+
+
+        <div class = readable>
+            <div class = title id = title3></div>
+            
+            <div class = artist id = artist13></div>
+            <div class = artist id = artist23></div>
+
+            <div class = genre id = genre13></div>
+            <div class = year id = year3></div>
+        </div>
+        <br>
+
+
+        <div class = readable>
+            <div class = title id = title4></div>
+            
+            <div class = artist id = artist14></div>
+            <div class = artist id = artist24></div>
+
+            <div class = genre id = genre14></div>
+            <div class = year id = year4></div>
+        </div>
+
+        <br>
+
+        <div class = readable>
+            <div class = title id = title5></div>
+            
+            <div class = artist id = artist15></div>
+            <div class = artist id = artist25></div>
+
+            <div class = genre id = genre15></div>
+            <div class = year id = year5></div>
+        </div>
+
+        <br>
+
+        <div class = readable>
+            <div class = title id = title6></div>
+            
+            <div class = artist id = artist16></div>
+            <div class = artist id = artist26></div>
+
+            <div class = genre id = genre16></div>
+            <div class = year id = year6></div>
+        </div>
+
+        <br>
+
+        <div class = readable>
+            <div class = title id = title7></div>
+            
+            <div class = artist id = artist17></div>
+            <div class = artist id = artist27></div>
+
+            <div class = genre id = genre17></div>
+            <div class = year id = year7></div>
+        </div>
+
+        <br>
+
+        <div class = readable>
+            <div class = title id = title8></div>
+            
+            <div class = artist id = artist18></div>
+            <div class = artist id = artist28></div>
+
+            <div class = genre id = genre18></div>
+            <div class = year id = year8></div>
+        </div>
+
+        <br>
+
+        <div class = readable>
+            <div class = title id = title9></div>
+            
+            <div class = artist id = artist19></div>
+            <div class = artist id = artist29></div>
+
+            <div class = genre id = genre19></div>
+            <div class = year id = year9></div>
+        </div>
+
+        <br>
+
+<br>
+        <form>
+            <select name='selgenre' id='selgenre' size=12 multiple>
+                <option value='Hip Hop'>Hip Hop</option>
+                <option value='Rap'>Rap</option>
+                <option value='Rock'>Rock</option>
+                <option value='Britpop'>Britpop</option>
+                <option value='Classic Rock'>Classic Rock</option>
+                <option value='Pop'>Pop</option>
+                <option value='Indie'>Indie</option>
+                <option value='R and B'>R and B</option>
+                <option value='Soul'>Soul</option>
+                <option value='Alternative'>Alternative</option>
+                <option value='Dance'>Dance</option>
+                <option value='Electronic'>Electronic</option>
+            </select>
+
+            <input type="Button" value = "Filter" onclick="filter()">
+        
+        </form>
+
+
+    </body>
+
+    <script language='javascript'>
+
+        //Displays all the set list
+        function showAll() {
+            for (var i = 0; i < setlist.length; i++) {
+                document.getElementById("title" + i).style.display ="inherit";
+                document.getElementById("artist1" + i).style.display ="inherit";
+                document.getElementById("artist2" + i).style.display ="inherit";
+                document.getElementById("genre1" + i).style.display ="inherit";
+                document.getElementById("year" + i).style.display ="inherit";
+            } 
+        }
+
+        //Filters set list based on genre
+         function filter() {
+             showAll();
+
+            var genresel = document.getElementById("selgenre");
+            var genre = genresel.options[genresel.selectedIndex].text;
+            
+            //determines if songs have correct genre
+            for (var i = 0; i < setlist.length; i++) {
+                var hasgenre = false;
+                for (var j = 0; j < setlist[i].genres.length; j++) {
+                    if ((setlist[i].genres[0] == genre) || (setlist[i].genres[1] == genre)) {
+                        hasgenre = true;
+                    }
+                }
+
+                //hides songs of wrong genre
+                if (!hasgenre) {
+                    document.getElementById("title" + i).style.display ="none";
+                    document.getElementById("artist1" + i).style.display ="none";
+                    document.getElementById("artist2" + i).style.display ="none";
+                    document.getElementById("genre1" + i).style.display ="none";
+                    document.getElementById("year" + i).style.display ="none";
+                }
+            }
+        }
+
+ 
+     var setlist = [{
+         "title": "Down",
+ 
+         "artists": ["Run The Jewels", "Joi"],
+ 
+         "genres": ["Hip Hop", "Rap"],
+ 
+         "year": "2016"
+     },
+ 
+ 
+ 
+ {
+     "title": "Bitter Sweet Symphony",
+ 
+     "artists": ["The Verse"],
+ 
+     "genres": ["Rock", "Britpop"],
+ 
+     "year": "1997"
+ },
+ 
+ 
+ {
+     "title": "Forever",
+ 
+     "artists": ["Asap Rocky", "Moby"],
+ 
+     "genres": ["Hip Hop", "Rap"],
+ 
+     "year": "2018"
+ },
+ 
+ 
+ {
+     "title": "Don't Stop Me Now",
+ 
+     "artists": ["Queen"],
+ 
+     "genres": ["Classic Rock", "Pop"],
+ 
+     "year": "1978"
+ },
+ 
+ 
+ {
+     "title": "Black",
+ 
+     "artists": ["Eric Nally"],
+ 
+     "genres": ["Pop", "Indie"],
+ 
+     "year": "2017"
+ },
+ 
+ 
+ {
+     "title": "Say Nada",
+ 
+     "artists": ["Shakka", "JME"],
+ 
+     "genres": ["R and B", "Soul"],
+ 
+     "year": "2015"
+ },
+ 
+ 
+ {
+     "title": "6 Foot 7 Foot",
+ 
+     "artists": ["Lil Wayne", "Cory Gunz"],
+ 
+     "genres": ["Hip Hop", "Rap"],
+ 
+     "year": "2011"
+ },
+ 
+ 
+ {
+     "title": "Easy Tiger",
+ 
+     "artists": ["Portugal. The Man"],
+ 
+     "genres": ["Alternative", "Indie"],
+ 
+     "year": "2017"
+ },
+ 
+ 
+ {
+     "title": "Powerful",
+ 
+     "artists": ["Major Lazer", "Ellie Goulding"],
+ 
+     "genres": ["Dance", "Electronic"],
+ 
+     "year": "2015"
+ },
+ 
+ 
+     {
+         "title": "Can't Stop",
+ 
+         "artists": ["Red Hot Chili Peppers"],
+ 
+         "genres": ["Alternative", "Indie"],
+ 
+         "year": "2002"
+     }];
+
+    // Didn't use for loop because it broke things
+    //Serialized
+    var songString0 = JSON.stringify(setlist[0]);
+    document.getElementById("song0").innerHTML = songString0;
+
+    var songString1 = JSON.stringify(setlist[1]);
+    document.getElementById("song1").innerHTML = songString1;
+
+    var songString2 = JSON.stringify(setlist[2]);
+    document.getElementById("song2").innerHTML = songString2;
+
+    var songString3 = JSON.stringify(setlist[3]);
+    document.getElementById("song3").innerHTML = songString3;
+
+    var songString4 = JSON.stringify(setlist[4]);
+    document.getElementById("song4").innerHTML = songString4;
+
+    var songString5 = JSON.stringify(setlist[5]);
+    document.getElementById("song5").innerHTML = songString5;
+
+    var songString6 = JSON.stringify(setlist[6]);
+    document.getElementById("song6").innerHTML = songString6;
+
+    var songString7 = JSON.stringify(setlist[7]);
+    document.getElementById("song7").innerHTML = songString7;
+
+    var songString8 = JSON.stringify(setlist[8]);
+    document.getElementById("song8").innerHTML = songString8;
+
+    var songString9 = JSON.stringify(setlist[9]);
+    document.getElementById("song9").innerHTML = songString9;
+
+    //Nicely formatted
+    for (var i = 0; i < setlist.length; i++) {
+        document.getElementById("title" + i).innerHTML = setlist[i].title;
+        
+        document.getElementById("artist1" + i).innerHTML = "Artist: " + setlist[i].artists[0];
+        if (setlist[i].artists.length > 1) {
+            document.getElementById("artist2" + i).innerHTML = "Featuring: " + setlist[i].artists[1];
+        }
+
+        if (setlist[i].genres.length > 1) {
+            document.getElementById("genre1" + i).innerHTML = "Genre: " + setlist[i].genres[0] + ", " + setlist[i].genres[1];
+        } else {
+           document.getElementById("genre1" + i).innerHTML = "Genre: " + setlist[i].genres[0]; 
+        }
+
+        document.getElementById("year" + i).innerHTML = "Year: " + setlist[i].year;
+    }
+
+
+    </script>
+
+    
+
+</html>
